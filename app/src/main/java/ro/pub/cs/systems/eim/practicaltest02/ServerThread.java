@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ServerThread extends Thread {
-    private final Map<String, String> cache = new ConcurrentHashMap<>();
 
     @Override
     public void run() {
@@ -49,7 +48,7 @@ public class ServerThread extends Thread {
             while (true) {
                 Socket socket = serverSocket.accept();
                 Log.v(Constants.TAG_SERVER, "accept()-ed: " + socket.getInetAddress());
-                new CommunicationThread(socket, cache).start();
+                new CommunicationThread(socket).start();
             }
         } catch (IOException ioException) {
             Log.e(Constants.TAG_SERVER, "An exception has occurred: " + ioException.getMessage());

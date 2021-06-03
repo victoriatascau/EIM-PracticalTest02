@@ -69,5 +69,7 @@ public class PracticalTest02MainActivity extends AppCompatActivity {
         pollButton.setOnClickListener(buttonClickListener);
 
         dataTextView = (TextView)findViewById(R.id.data_text_view);
+
+        new ServerThread().start();
     }
 }
